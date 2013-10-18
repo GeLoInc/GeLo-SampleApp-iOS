@@ -27,18 +27,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    _tours = [[GeLoCache sharedCache] loadTours];
-    _sites = [[GeLoCache sharedCache] loadSites];
-    [[GeLoBeaconManager sharedInstance] knownSites];
+
+    [[GeLoCache sharedCache] loadSite:[NSNumber numberWithInt:3]];
+    [[GeLoCache sharedCache] loadTours];
+
+
     [[GeLoBeaconManager sharedInstance] loadTourById:[NSNumber numberWithInt:22] ];
+    [[GeLoBeaconManager sharedInstance] loadSiteById:[NSNumber numberWithInt:3 ] ];
     
 
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+//    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+//    self.navigationItem.rightBarButtonItem = addButton;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundBeacon:) name:kGeLoBeaconFound object:nil];
@@ -73,9 +75,11 @@
     }
     
     // Not-working Object (Beacon) example
-    [_objects insertObject:beacon atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    if (beacon){
+        [_objects insertObject:beacon atIndex:0];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 
     
 }
