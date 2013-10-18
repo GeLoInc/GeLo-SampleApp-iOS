@@ -66,20 +66,23 @@
     GeLoBeacon *beacon = sender.userInfo[@"beacon"];
     NSString *str = [NSString stringWithFormat:@"%d",[beacon beaconId]];
     GeLoBeaconInfo *beaconInfo = [beacon info];
-    NSString *name = [beaconInfo name];
-    NSString *description = [beaconInfo description];
     NSLog(@"Nearest Beacon Changed : %@",str);
     
     if (!_objects) {
         _objects = [[NSMutableArray alloc] init];
     }
     
-    // Not-working Object (Beacon) example
-    if (beacon){
-        [_objects insertObject:beacon atIndex:0];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    // if we have a non-nil beacon with beaconInfo that's present
+    if ([[beaconInfo name] length]){
+        // and it's not already in our list
+        if ([_objects indexOfObject:beacon] == NSNotFound) {
+            [_objects insertObject:beacon atIndex:0];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
     }
+    
+
 
     
 }
