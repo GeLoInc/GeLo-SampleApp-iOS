@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 @interface MasterViewController : UITableViewController
+
+@property (nonatomic) NSArray *tours;
+@property (nonatomic) NSArray *sites;
+
 
 @end

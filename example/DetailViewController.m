@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import <GeLoSDK/GeLoSDK.h>
 
 @interface DetailViewController ()
 - (void)configureView;
@@ -31,7 +32,10 @@
     // Update the user interface for the detail item.
 
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+        GeLoBeacon *beacon = self.detailItem;
+        GeLoBeaconInfo *beaconInfo = [beacon info];
+        
+        self.detailDescriptionLabel.text = [beaconInfo description];
     }
 }
 

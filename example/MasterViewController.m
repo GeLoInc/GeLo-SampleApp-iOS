@@ -6,8 +6,10 @@
 //  Copyright (c) 2013 GeLo Inc. All rights reserved.
 //
 
-#import "MasterViewController.h"
+#import <GeLoSDK/GeLoSDK.h>
+#import <Foundation/Foundation.h>
 
+#import "MasterViewController.h"
 #import "DetailViewController.h"
 
 @interface MasterViewController () {
@@ -25,11 +27,57 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _tours = [[GeLoCache sharedCache] loadTours];
+    _sites = [[GeLoCache sharedCache] loadSites];
+    [[GeLoBeaconManager sharedInstance] knownSites];
+    [[GeLoBeaconManager sharedInstance] loadTourById:[NSNumber numberWithInt:22] ];
+    
+
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundBeacon:) name:kGeLoBeaconFound object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nearestBeacon:) name:kGeLoNearestBeaconChanged object:nil];
+    [[GeLoBeaconManager sharedInstance] startScanningForBeacons];
+    NSLog(@"Scanning for Beacons!!!");
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [[GeLoBeaconManager sharedInstance] stopScanningForBeacons];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kGeLoBeaconFound object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kGeLoNearestBeaconChanged object:nil];
+    NSLog(@"Stop all the Scannin!!!");
+}
+
+- (void)foundBeacon:(NSNotification *)sender {
+    // do something with the discovered beacon here
+    GeLoBeacon *beacon = sender.userInfo[@"beacon"];
+    NSString *str = [NSString stringWithFormat:@"%d",[beacon beaconId]];
+    NSLog(@"Found Beacon : %@",str);
+}
+
+- (void)nearestBeacon:(NSNotification *)sender {
+    GeLoBeacon *beacon = sender.userInfo[@"beacon"];
+    NSString *str = [NSString stringWithFormat:@"%d",[beacon beaconId]];
+    GeLoBeaconInfo *beaconInfo = [beacon info];
+    NSString *name = [beaconInfo name];
+    NSString *description = [beaconInfo description];
+    NSLog(@"Nearest Beacon Changed : %@",str);
+    
+    if (!_objects) {
+        _objects = [[NSMutableArray alloc] init];
+    }
+    
+    // Not-working Object (Beacon) example
+    [_objects insertObject:beacon atIndex:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,12 +88,12 @@
 
 - (void)insertNewObject:(id)sender
 {
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    [_objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    if (!_objects) {
+//        _objects = [[NSMutableArray alloc] init];
+//    }
+//    [_objects insertObject:[NSDate date] atIndex:0];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Table View
@@ -64,8 +112,10 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    GeLoBeacon *beacon = _objects[indexPath.row];
+    GeLoBeaconInfo *beaconInfo = [beacon info];
+    
+    cell.textLabel.text = [beaconInfo name];
     return cell;
 }
 

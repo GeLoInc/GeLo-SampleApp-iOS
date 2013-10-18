@@ -400,7 +400,16 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "example/example-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"BACKEND=kBackendStaging",
+				);
 				INFOPLIST_FILE = "example/example-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -418,7 +427,12 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "example/example-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "BACKEND=kBackendProduction";
 				INFOPLIST_FILE = "example/example-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -485,6 +499,7 @@
 				BBAC243E18102E5800091DA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BBAC243F18102E5800091DA8 /* Build configuration list for PBXNativeTarget "exampleTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +508,7 @@
 				BBAC244118102E5800091DA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

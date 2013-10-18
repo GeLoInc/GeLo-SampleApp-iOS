@@ -8,11 +8,20 @@
 
 #import "AppDelegate.h"
 #import <GeLoSDK/GeLoSDK.h>
+#import <Foundation/Foundation.h>
 
 @implementation AppDelegate
 
+NSString *const kBackendStaging = @"staging";
+NSString *const kBackendProduction = @"production";
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    __unused GeLoUrl *url = [[GeLoUrl alloc] initWithEnv: BACKEND ];
+	[[GeLoBeaconManager sharedInstance] includeBetaTours];
+    [[GeLoCache sharedCache] clearCache];
+
     // Override point for customization after application launch.
     return YES;
 }
