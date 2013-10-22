@@ -47,10 +47,23 @@
         if (beaconInfo.images.count) {
             NSLog(@"Beacon contains an image, loading...");
             self.beaconImageView.image = [[GeLoCache sharedCache] loadImage:beaconInfo.images[0]];
+        } else {
+            NSLog(@"No images");
+            [self.beaconImageView removeFromSuperview];
+            [UIView animateWithDuration:0.4
+                 animations:^{
+                     self.beaconDescriptionTextView.frame = CGRectMake(10,-500,300,1200);
+                 }
+                 completion:^(BOOL finished){}
+             ];
         }
         
         // Set Description Text
         self.beaconDescriptionTextView.text = [beaconInfo description];
+        
+        // Make the scroll view large enough to fit the content
+        self.scrollView.contentSize = CGSizeMake(320,1850);
+        
     }
 }
 
