@@ -14,5 +14,7 @@
 @property (nonatomic) NSArray *tours;
 @property (nonatomic) NSArray *sites;
 
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+
 
 @end

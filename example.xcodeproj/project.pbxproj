@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB3B6991182D3F8900FFF905 /* GeLoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAC24441810388600091DA8 /* GeLoSDK.framework */; };
 		BBAC240B18102E5800091DA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAC240A18102E5800091DA8 /* Foundation.framework */; };
 		BBAC240D18102E5800091DA8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAC240C18102E5800091DA8 /* CoreGraphics.framework */; };
 		BBAC240F18102E5800091DA8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAC240E18102E5800091DA8 /* UIKit.framework */; };
@@ -22,7 +23,6 @@
 		BBAC242F18102E5800091DA8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAC240E18102E5800091DA8 /* UIKit.framework */; };
 		BBAC243718102E5800091DA8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BBAC243518102E5800091DA8 /* InfoPlist.strings */; };
 		BBAC243918102E5800091DA8 /* exampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAC243818102E5800091DA8 /* exampleTests.m */; };
-		BBAC24451810388600091DA8 /* GeLoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAC24441810388600091DA8 /* GeLoSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBAC24451810388600091DA8 /* GeLoSDK.framework in Frameworks */,
+				BB3B6991182D3F8900FFF905 /* GeLoSDK.framework in Frameworks */,
 				BBAC240D18102E5800091DA8 /* CoreGraphics.framework in Frameworks */,
 				BBAC240F18102E5800091DA8 /* UIKit.framework in Frameworks */,
 				BBAC240B18102E5800091DA8 /* Foundation.framework in Frameworks */,

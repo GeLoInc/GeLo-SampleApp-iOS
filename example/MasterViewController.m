@@ -28,57 +28,85 @@
 {
     [super viewDidLoad];
 
-    [[GeLoCache sharedCache] loadSite:[NSNumber numberWithInt:3]];
+    // Load Site and Tour - Content
+    [[GeLoCache sharedCache] loadSite:[NSNumber numberWithInt:39]];
     [[GeLoCache sharedCache] loadTours];
-
-
-    [[GeLoBeaconManager sharedInstance] loadTourById:[NSNumber numberWithInt:22] ];
-    [[GeLoBeaconManager sharedInstance] loadSiteById:[NSNumber numberWithInt:3 ] ];
+    
+    // Load Site and Tour - Beacon + Triggers
+    [[GeLoBeaconManager sharedInstance] loadTourById:[NSNumber numberWithInt:81 ] ];
 }
 - (void)viewWillAppear:(BOOL)animated{
+    // Register for notifications when beacons are found
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundBeacon:) name:kGeLoBeaconFound object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nearestBeacon:) name:kGeLoNearestBeaconChanged object:nil];
+    
+    // Have iOS begin scanning for Bluetooth beacons
     [[GeLoBeaconManager sharedInstance] startScanningForBeacons];
-    NSLog(@"Scanning for Beacons!!!");
 }
 - (void)viewWillDisappear:(BOOL)animated{
+    // When the view disappears, stop scanning for beacons and remove observers
     [[GeLoBeaconManager sharedInstance] stopScanningForBeacons];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kGeLoBeaconFound object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kGeLoNearestBeaconChanged object:nil];
-    NSLog(@"Stop the Scanning!!!");
 }
 
+
 - (void)foundBeacon:(NSNotification *)sender {
-    // do something with the discovered beacon here
+    // Do something with the discovered beacon here (unused for our application)
     GeLoBeacon *beacon = sender.userInfo[@"beacon"];
-    NSString *str = [NSString stringWithFormat:@"%d",[beacon beaconId]];
-    NSLog(@"Found Beacon : %@",str);
+    NSString *str = [NSString stringWithFormat:@"%lu",(unsigned long)[beacon beaconId]];
+//    NSLog(@"Found Beacon : %@",str);
 }
 
 - (void)nearestBeacon:(NSNotification *)sender {
+    // Do something with the new nearest beacon here
     GeLoBeacon *beacon = sender.userInfo[@"beacon"];
-    NSString *str = [NSString stringWithFormat:@"%d",[beacon beaconId]];
+    NSString *str = [NSString stringWithFormat:@"%lu",(unsigned long)[beacon beaconId]];
     GeLoBeaconInfo *beaconInfo = [beacon info];
     NSLog(@"Nearest Beacon Changed : %@",str);
     
     if (!_objects) {
+        NSLog(@"No Objects!");
         _objects = [[NSMutableArray alloc] init];
     }
     
     // if we have a non-nil beacon with beaconInfo that's present
     if ([[beaconInfo name] length]){
+        NSLog(@"Have a name!");
+        
+        NSString *address = [beaconInfo bannerAdUrl];
+        NSLog(@"URL: %@", address);
+        
+        // Build the url and loadRequest
+        NSString *urlString = [NSString stringWithFormat:@"%@",address];
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
+        
         // and it's not already in our list
-        if ([_objects indexOfObject:beacon] == NSNotFound) {
-            [_objects insertObject:beacon atIndex:0];
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-            [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        }
+//        if ([_objects indexOfObject:beacon] == NSNotFound) {
+//            NSLog(@"Not in the list");
+//            
+//            // Add that beacon to our list
+        
+//        DetailViewController *foo = [[DetailViewController alloc] init];
+//        [foo setDetailItem:beacon];
+//        [self.navigationController popToRootViewControllerAnimated:YES];
+//        [self.navigationController pushViewController: foo animated:YES];
+    
+
+////
+//            
+//            
+//            [_objects insertObject:beacon atIndex:0];
+//            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//            [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//        }
     }
-    
-
-
-    
 }
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
