@@ -17,11 +17,6 @@ NSString *const kBackendProduction = @"production";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    __unused GeLoUrl *url = [[GeLoUrl alloc] initWithEnv: BACKEND ];
-	[[GeLoBeaconManager sharedInstance] includeBetaTours];
-//    [[GeLoCache sharedCache] clearCache];
-
     // Override point for customization after application launch.
     return YES;
 }

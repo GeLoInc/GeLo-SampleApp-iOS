@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GeLoSDK/GeLoSDK.h>
 
 @interface DetailViewController : UIViewController
 
-@property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) GeLoBeaconInfo *detailItem;
 
 @property (weak, nonatomic) IBOutlet UITextView *beaconDescriptionTextView;
 @property (weak, nonatomic) IBOutlet UITextView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *beaconImageView;
+
+- (void)setBeaconInfo:(GeLoBeaconInfo *)newDetailItem;
 
 @end
