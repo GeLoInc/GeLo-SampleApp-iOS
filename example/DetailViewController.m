@@ -17,53 +17,30 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
+- (void)setBeaconInfo:(GeLoBeaconInfo *)newDetailItem
 {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
+    if (self.detailItem != newDetailItem) {
+        self.detailItem = newDetailItem;
         
         // Update the view.
         [self configureView];
     }
 }
+
+// Update the user interface for the detail item.
 - (void)configureView
 {
-    // Update the user interface for the detail item.
     if (self.detailItem) {
-        // Get Beacon and Beacon Info
-        GeLoBeacon *beacon = self.detailItem;
-        GeLoBeaconInfo *beaconInfo = [beacon info];
-        
-        // Set title
-        self.title = [beaconInfo name];
 
-        // Set Site and Tour Name
-        NSString *siteName = [[[GeLoBeaconManager sharedInstance] currentSite] name];
-        NSString *tourName = [[[GeLoBeaconManager sharedInstance] currentTour] name];
-        NSString *promptString = [NSString stringWithFormat:@"%@ : %@", siteName, tourName];
-        [[self navigationItem] setPrompt: promptString];
-        
-        // Set Image (if beacon has one present)
-        if (beaconInfo.images.count) {
-            NSLog(@"Beacon contains an image, loading...");
-            self.beaconImageView.image = [[GeLoCache sharedCache] loadImage:beaconInfo.images[0]];
-        } else {
-            NSLog(@"No images");
-            [self.beaconImageView removeFromSuperview];
-            [UIView animateWithDuration:0.4
-                 animations:^{
-                     self.beaconDescriptionTextView.frame = CGRectMake(10,-500,300,1200);
-                 }
-                 completion:^(BOOL finished){}
-             ];
-        }
-        
-        // Set Description Text
-        self.beaconDescriptionTextView.text = [beaconInfo description];
-        
-        // Make the scroll view large enough to fit the content
-        self.scrollView.contentSize = CGSizeMake(320,1850);
-        
+		//These lines assume that the first item in the list of media 
+		NSDictionary *media = [self.detailItem.mediaURLs objectAtIndex:0];
+		NSString *mediaUrl = [media objectForKey:@"url"];
+		NSString *imagePath = [[GeLoPlatformManager sharedInstance] getMediaPath:mediaUrl];
+		UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+
+		self.navigationController.title = self.detailItem.name;
+        self.beaconDescriptionTextView.text = self.detailItem.description;
+		self.beaconImageView.image = image;
     }
 }
 

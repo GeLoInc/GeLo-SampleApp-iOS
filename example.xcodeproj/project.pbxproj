@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5422C35D191D60460022047B /* BeaconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5422C35C191D60460022047B /* BeaconViewController.m */; };
+		54A44288192E2C68003C6816 /* GeLoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A44287192E2C68003C6816 /* GeLoSDK.framework */; };
 		BBAC240B18102E5800091DA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAC240A18102E5800091DA8 /* Foundation.framework */; };
 		BBAC240D18102E5800091DA8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAC240C18102E5800091DA8 /* CoreGraphics.framework */; };
 		BBAC240F18102E5800091DA8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAC240E18102E5800091DA8 /* UIKit.framework */; };
@@ -14,7 +16,7 @@
 		BBAC241718102E5800091DA8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAC241618102E5800091DA8 /* main.m */; };
 		BBAC241B18102E5800091DA8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAC241A18102E5800091DA8 /* AppDelegate.m */; };
 		BBAC241E18102E5800091DA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBAC241C18102E5800091DA8 /* Main.storyboard */; };
-		BBAC242118102E5800091DA8 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAC242018102E5800091DA8 /* MasterViewController.m */; };
+		BBAC242118102E5800091DA8 /* TourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAC242018102E5800091DA8 /* TourViewController.m */; };
 		BBAC242418102E5800091DA8 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAC242318102E5800091DA8 /* DetailViewController.m */; };
 		BBAC242618102E5800091DA8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBAC242518102E5800091DA8 /* Images.xcassets */; };
 		BBAC242D18102E5800091DA8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAC242C18102E5800091DA8 /* XCTest.framework */; };
@@ -22,7 +24,7 @@
 		BBAC242F18102E5800091DA8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAC240E18102E5800091DA8 /* UIKit.framework */; };
 		BBAC243718102E5800091DA8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BBAC243518102E5800091DA8 /* InfoPlist.strings */; };
 		BBAC243918102E5800091DA8 /* exampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAC243818102E5800091DA8 /* exampleTests.m */; };
-		BBAC24451810388600091DA8 /* GeLoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAC24441810388600091DA8 /* GeLoSDK.framework */; };
+		EBA6B6FAD20D4C5C999CB833 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27ECCCE3F561449FB4D6A40F /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27ECCCE3F561449FB4D6A40F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5422C35B191D60460022047B /* BeaconViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconViewController.h; sourceTree = "<group>"; };
+		5422C35C191D60460022047B /* BeaconViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconViewController.m; sourceTree = "<group>"; };
+		54A44287192E2C68003C6816 /* GeLoSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GeLoSDK.framework; sourceTree = "<group>"; };
+		AB85F68E5EDF4176888E0720 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		BBAC240718102E5800091DA8 /* example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBAC240A18102E5800091DA8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BBAC240C18102E5800091DA8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -47,8 +54,8 @@
 		BBAC241918102E5800091DA8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BBAC241A18102E5800091DA8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BBAC241D18102E5800091DA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BBAC241F18102E5800091DA8 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		BBAC242018102E5800091DA8 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		BBAC241F18102E5800091DA8 /* TourViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TourViewController.h; sourceTree = "<group>"; };
+		BBAC242018102E5800091DA8 /* TourViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TourViewController.m; sourceTree = "<group>"; };
 		BBAC242218102E5800091DA8 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		BBAC242318102E5800091DA8 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		BBAC242518102E5800091DA8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -57,8 +64,6 @@
 		BBAC243418102E5800091DA8 /* exampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "exampleTests-Info.plist"; sourceTree = "<group>"; };
 		BBAC243618102E5800091DA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BBAC243818102E5800091DA8 /* exampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = exampleTests.m; sourceTree = "<group>"; };
-		BBAC24421810334B00091DA8 /* GeLoSDK.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; name = GeLoSDK.xcworkspace; path = "../../gelo/GeLoSDK-private/GeLoSDK.xcworkspace"; sourceTree = "<group>"; };
-		BBAC24441810388600091DA8 /* GeLoSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GeLoSDK.framework; path = "../../../Library/Developer/Xcode/DerivedData/GeLoSDK-bgdffyduexewxvhdpxdymlbdnixw/Build/Products/Debug-iphoneos/GeLoSDK.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +71,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBAC24451810388600091DA8 /* GeLoSDK.framework in Frameworks */,
 				BBAC240D18102E5800091DA8 /* CoreGraphics.framework in Frameworks */,
 				BBAC240F18102E5800091DA8 /* UIKit.framework in Frameworks */,
 				BBAC240B18102E5800091DA8 /* Foundation.framework in Frameworks */,
+				EBA6B6FAD20D4C5C999CB833 /* libPods.a in Frameworks */,
+				54A44288192E2C68003C6816 /* GeLoSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +99,7 @@
 				BBAC243218102E5800091DA8 /* exampleTests */,
 				BBAC240918102E5800091DA8 /* Frameworks */,
 				BBAC240818102E5800091DA8 /* Products */,
+				AB85F68E5EDF4176888E0720 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,12 +115,12 @@
 		BBAC240918102E5800091DA8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BBAC24441810388600091DA8 /* GeLoSDK.framework */,
-				BBAC24421810334B00091DA8 /* GeLoSDK.xcworkspace */,
+				54A44287192E2C68003C6816 /* GeLoSDK.framework */,
 				BBAC240A18102E5800091DA8 /* Foundation.framework */,
 				BBAC240C18102E5800091DA8 /* CoreGraphics.framework */,
 				BBAC240E18102E5800091DA8 /* UIKit.framework */,
 				BBAC242C18102E5800091DA8 /* XCTest.framework */,
+				27ECCCE3F561449FB4D6A40F /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -123,11 +130,13 @@
 			children = (
 				BBAC241918102E5800091DA8 /* AppDelegate.h */,
 				BBAC241A18102E5800091DA8 /* AppDelegate.m */,
-				BBAC241C18102E5800091DA8 /* Main.storyboard */,
-				BBAC241F18102E5800091DA8 /* MasterViewController.h */,
-				BBAC242018102E5800091DA8 /* MasterViewController.m */,
+				BBAC241F18102E5800091DA8 /* TourViewController.h */,
+				BBAC242018102E5800091DA8 /* TourViewController.m */,
+				5422C35B191D60460022047B /* BeaconViewController.h */,
+				5422C35C191D60460022047B /* BeaconViewController.m */,
 				BBAC242218102E5800091DA8 /* DetailViewController.h */,
 				BBAC242318102E5800091DA8 /* DetailViewController.m */,
+				BBAC241C18102E5800091DA8 /* Main.storyboard */,
 				BBAC242518102E5800091DA8 /* Images.xcassets */,
 				BBAC241118102E5800091DA8 /* Supporting Files */,
 			);
@@ -170,9 +179,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBAC243C18102E5800091DA8 /* Build configuration list for PBXNativeTarget "example" */;
 			buildPhases = (
+				F6F056F6CF964911BF566C4D /* Check Pods Manifest.lock */,
 				BBAC240318102E5800091DA8 /* Sources */,
 				BBAC240418102E5800091DA8 /* Frameworks */,
 				BBAC240518102E5800091DA8 /* Resources */,
+				342BE2AFD3FF4703926EB04A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -258,14 +269,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		342BE2AFD3FF4703926EB04A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6F056F6CF964911BF566C4D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BBAC240318102E5800091DA8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				BBAC241B18102E5800091DA8 /* AppDelegate.m in Sources */,
-				BBAC242118102E5800091DA8 /* MasterViewController.m in Sources */,
+				BBAC242118102E5800091DA8 /* TourViewController.m in Sources */,
 				BBAC241718102E5800091DA8 /* main.m in Sources */,
+				5422C35D191D60460022047B /* BeaconViewController.m in Sources */,
 				BBAC242418102E5800091DA8 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,6 +435,7 @@
 		};
 		BBAC243D18102E5800091DA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB85F68E5EDF4176888E0720 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -397,6 +443,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/GeLoSDK-bgdffyduexewxvhdpxdymlbdnixw/Build/Products/Debug-iphoneos",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/GeLoSDK-gxkghlwwbefnojbpgwiibzzsbbuy/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "example/example-Prefix.pch";
@@ -406,10 +454,7 @@
 					"BACKEND=kBackendStaging",
 				);
 				INFOPLIST_FILE = "example/example-Info.plist";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -417,6 +462,7 @@
 		};
 		BBAC243E18102E5800091DA8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB85F68E5EDF4176888E0720 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -424,15 +470,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/GeLoSDK-bgdffyduexewxvhdpxdymlbdnixw/Build/Products/Debug-iphoneos",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/GeLoSDK-gxkghlwwbefnojbpgwiibzzsbbuy/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "example/example-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "BACKEND=kBackendProduction";
 				INFOPLIST_FILE = "example/example-Info.plist";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
