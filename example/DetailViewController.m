@@ -30,16 +30,16 @@
 // Update the user interface for the detail item.
 - (void)configureView
 {
-    if (self.detailItem) {
-
+    if ([self.detailItem isKindOfClass:[GeLoTourInfo class]]) {
+        GeLoTourInfo *info = (GeLoTourInfo *)self.detailItem;
 		//These lines assume that the first item in the list of media 
-		NSDictionary *media = [self.detailItem.mediaURLs objectAtIndex:0];
+		NSDictionary *media = [info.mediaURLs objectAtIndex:0];
 		NSString *mediaUrl = [media objectForKey:@"url"];
 		NSString *imagePath = [[GeLoPlatformManager sharedInstance] getMediaPath:mediaUrl];
 		UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
 
-		self.navigationController.title = self.detailItem.name;
-        self.beaconDescriptionTextView.text = self.detailItem.description;
+		self.navigationController.title = info.name;
+        self.beaconDescriptionTextView.text = info.body;
 		self.beaconImageView.image = image;
     }
 }

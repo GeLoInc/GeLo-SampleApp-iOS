@@ -33,7 +33,7 @@
 
 	//Platform access requires OAuth credentials provided by the GeLo platform.
     [[GeLoPlatformManager sharedInstance] setOAuth2ClientID:<#(NSString *)#> username:<#(NSString *)#> andPassword:<#(NSString *)#>];
-	[[GeLoPlatformManager sharedInstance] loadSiteById:<#(NSInteger)#>];
+    [[GeLoPlatformManager sharedInstance] loadSiteById:<#(NSInteger)#>];
 	[[GeLoPlatformManager sharedInstance] shouldCache:YES];
 }
 - (void)viewWillAppear:(BOOL)animated{

@@ -8,6 +8,7 @@
 
 #import "BeaconViewController.h"
 #import "DetailViewController.h"
+#import <CoreLocation/CoreLocation.h>
 #import <GeLoSDK/GeLoSDK.h>
 
 @interface BeaconViewController () {
@@ -27,13 +28,34 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beaconFound:) name:kGeLoBeaconFound object:nil];
-	[[GeLoBeaconManager sharedInstance] startScanningForBeacons];
+    [self tryToStartScanning];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-	[[GeLoBeaconManager sharedInstance] startScanningForBeacons];
+	[[GeLoBeaconManager sharedInstance] stopScanningForBeacons];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:kGeLoBeaconFound object:nil];
+}
+
+- (void)tryToStartScanning {
+    NSInteger status = [CLLocationManager authorizationStatus];
+    if([CLLocationManager locationServicesEnabled]){
+        if(status == kCLAuthorizationStatusDenied) {
+            NSLog(@"CL Denied");
+        }else if(status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+            NSLog(@"CL Authorized");
+            [[GeLoBeaconManager sharedInstance] startScanningForBeacons];
+        }else if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+            NSLog(@"You didn't ask for CL permission");
+        }
+    }else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Enable Location Services"
+                                                        message:@"This app contains location sensitive content that utilizes location services. Please go to settings and enable Location Services."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Close"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 - (void)beaconFound:(NSNotification *)sender {
@@ -66,7 +88,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
 	GeLoBeacon *beacon = _beacons[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld", beacon.beaconId];
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)beacon.beaconId];
 
     return cell;
 }

@@ -12,12 +12,12 @@
 
 @implementation AppDelegate
 
-NSString *const kBackendStaging = @"staging";
 NSString *const kBackendProduction = @"production";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[GeLoBeaconManager sharedInstance] requestAlwaysScanningPermission];
     return YES;
 }
 							

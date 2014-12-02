@@ -10,31 +10,31 @@
 	<string>example</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>3D3CE210-2F25-4E98-B6AE-A75F55465D61</key>
-		<string>https://github.com/GeLoInc/GeLo-App-Sample.git</string>
+		<key>E08E67DFDBCB772120BE427140CEA30C4D3B6C71</key>
+		<string>https://github.com/GeLoInc/GeLo-SampleApp-iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>example.xcodeproj/project.xcworkspace</string>
+	<string>example.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>3D3CE210-2F25-4E98-B6AE-A75F55465D61</key>
+		<key>E08E67DFDBCB772120BE427140CEA30C4D3B6C71</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/GeLoInc/GeLo-App-Sample.git</string>
+	<string>https://github.com/GeLoInc/GeLo-SampleApp-iOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>3D3CE210-2F25-4E98-B6AE-A75F55465D61</string>
+	<string>E08E67DFDBCB772120BE427140CEA30C4D3B6C71</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>3D3CE210-2F25-4E98-B6AE-A75F55465D61</string>
+			<string>E08E67DFDBCB772120BE427140CEA30C4D3B6C71</string>
 			<key>IDESourceControlWCCName</key>
-			<string>GeLo-App-Sample</string>
+			<string>GeLo-SampleApp-iOS</string>
 		</dict>
 	</array>
 </dict>
